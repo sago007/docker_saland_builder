@@ -11,3 +11,5 @@ VOLUME ["/data"]
 COPY saland_compile_script.sh /opt/
 
 USER builder
+
+CMD /opt/saland_compile_script.sh

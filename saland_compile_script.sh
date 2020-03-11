@@ -3,8 +3,14 @@ set -euo pipefail
 cd /staging
 git clone https://github.com/sago007/saland.git
 cd saland
-VERSION_ID=$(git log -1 --date=short --format="saland_%cd_%H")
+VERSION_ID=$(git log -1 --date=short --format="saland_%cd_%h")
 echo $VERSION_ID
+ZIPFILE="/data/${VERSION_ID}.zip"
+if [ -e "$ZIPFILE" ]
+then
+ echo "$ZIPFILE exist -> UP TO DATE"
+ exit 1
+fi
 STAGING_DIR=/staging/$VERSION_ID
 mkdir $STAGING_DIR
 cp -r /usr/include/utf8 /staging/saland/src/Libs/include/ && \
