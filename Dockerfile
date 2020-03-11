@@ -1,24 +1,13 @@
-FROM debian:8
-MAINTAINER poul@poulsander.com
-RUN apt-get update && apt-get install -y build-essential libsdl1.2-dev libxmp-dev
-RUN apt-get install -y \
-  git \
-  zip \
-  libcurl4-gnutls-dev \
-  libopenal-dev \
-  libopus-dev \
-  libopusfile-dev \
-  libsdl1.2-dev \
-  libspeexdsp-dev \
-  libvorbis-dev \
-  gcc-mingw-w64-i686
+FROM sago007/docker_blockattack
 
-RUN adduser --disabled-password --gecos "OpenArena user" openarena && \
+RUN apt-get update && apt-get install -y zip gettext mxe-i686-w64-mingw32.static-sdl2-gfx mxe-i686-w64-mingw32.static-libxml2 mxe-i686-w64-mingw32.static-box2d libutfcpp-dev
+
+RUN adduser --disabled-password --gecos "Builder user" builder && \
   mkdir -p /data && chmod 777 /data && \
   mkdir -p /staging && chmod 777 /staging
 
 VOLUME ["/data"]
 
-COPY engine_compile_script.sh /opt/
+COPY saland_compile_script.sh /opt/
 
-USER openarena
+USER builder
