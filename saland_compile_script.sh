@@ -21,4 +21,5 @@ mv /staging/saland/saland.exe $STAGING_DIR/
 cp -r /staging/saland/data $STAGING_DIR/
 cd /staging
 zip -r $VERSION_ID $VERSION_ID
+chmod 644 $VERSION_ID.zip
 mv $VERSION_ID.zip /data/
