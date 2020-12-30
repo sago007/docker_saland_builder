@@ -13,8 +13,6 @@ then
 fi
 STAGING_DIR=/staging/saland_windows
 mkdir $STAGING_DIR
-cp -r /usr/include/utf8 /staging/saland/src/Libs/include/ && \
-cp /usr/include/utf8.h /staging/saland/src/Libs/include/
 i686-w64-mingw32.static-cmake .
 make
 mv /staging/saland/saland.exe $STAGING_DIR/
