@@ -13,10 +13,11 @@ then
 fi
 STAGING_DIR=/staging/saland_windows
 mkdir $STAGING_DIR
+./packdata.sh
 i686-w64-mingw32.static-cmake .
 make
 mv /staging/saland/saland.exe $STAGING_DIR/
-cp -r /staging/saland/data $STAGING_DIR/
+cp -r /staging/saland/packages $STAGING_DIR/
 cd /staging
 zip -r $VERSION_ID saland_windows
 chmod 644 $VERSION_ID.zip
